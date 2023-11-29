@@ -1,0 +1,79 @@
+{% block delete_completetask %}
+<!-- Modal Delete -->
+<div class="modal" id="DeleteModal" tabindex="-1" role="dialog">s
+    <div class="modal-dialog">
+        <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title" id="DeleteModalLabel">Confirm</h1>
+        </div>
+  
+        <!-- Modal body -->
+        <form method="post">
+            <div class="modal-body">
+                {% csrf_token %}
+                <p>Are you sure to delete "<b>{{task}}</b>"?</p>
+                <!-- <input class="button-submit" type="submit" value="Delete"> -->
+            </div>
+        </form>
+        <hr>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <a href="{% url 'deletetask' task.id %}"><input class="button-submit" type="submit" data-dismiss="modal" value="Delete"></a>
+            <input type="button" class="button-submit" data-dismiss="modal" aria-label="Close" value="Cancel">
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block delete_incompletetask %}
+<!-- Modal Delete -->
+<div class="modal" id="DeleteModal" tabindex="-1" role="dialog">s
+    <div class="modal-dialog">
+        <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title" id="DeleteModalLabel">Confirm</h1>
+        </div>
+  
+        <!-- Modal body -->
+        <form method="post">
+            <div class="modal-body">
+                {% csrf_token %}
+                <p>Are you sure to delete "<b>{{task}}</b>"?</p>
+                <!-- <input class="button-submit" type="submit" value="Delete"> -->
+            </div>
+        </form>
+        <hr>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <a href="{% url 'deletetask' task.id %}"><input class="button-submit" type="submit" data-dismiss="modal" value="Delete"></a>
+            <input type="button" class="button-submit" data-dismiss="modal" aria-label="Close" value="Cancel">
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+# def deleteTask(request, id):
+#     task = Task.objects.get(pk=id)
+#     task.delete()
+#     # success_url = reverse_lazy('alltasks')
+#     return redirect('alltasks')
+    
+    
+# def deleteTask(request, id):
+#     deltask = get_object_or_404(Task, pk=id)
+#     context = {'deletetask': deltask}
+
+#     if request.method == 'POST':
+#         deltask.delete()
+#         return HttpResponseRedirect(reverse('alltasks'))
+#     return render(request, 'base/task_confirm_delete.html', context)

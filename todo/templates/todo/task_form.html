@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block headerbar %}
+
+{% endblock %}
+
+{% block maincol %}
+<div class="maincol">
+    <div data-region="blocks-right">
+        <div class="header-bar-narrow">
+            <p></p>
+            <a href="{% url 'alltasks' %}">&#8592; Go back</a>
+        </div>
+        
+        <div class="card-body">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="button-submit" type="submit" value="Submit">  
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

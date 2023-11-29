@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block maincol %}
+<div class="maincol">
+    <div data-region="blocks-right">
+        <div class="header-bar">
+            <div>
+                <h2 style="margin-left: 0px; font-size: 30px;">You have {{count}} incomplete task{{count|pluralize:"s"}}</h2>
+            </div>
+        </div>
+        
+        <div class="search-bar">
+            <form method="get">
+                <input type='text' name='search-area' value='{{search_input}}'> 
+                <input class="button-create" type="submit" value="Search">
+            </form>
+            <a class="button-create" href="{% url 'create-task' %}">Create Task</a>
+        </div>
+        
+        
+        <div class="task-items-wrapper" style="background: white;">
+            {% for task in alltasks %}
+                <div class="task-wrapper">
+                    {% if task.complete %}
+                        <div class="task-title">
+                            <div class="task-complete-icon"></div>
+                            <i><s><a href="{% url 'task-edit' task.id %}">{{task}}</a></s></i>
+                        </div>
+                        <a href="{% url 'deletetask' task.id %}">
+                            <i class="fas fa-trash" style="color: #c71a2b; cursor: pointer;" data-toggle="modal" data-target="#DeleteModal"></i>
+                        </a>
+                        
+                    {% else %}
+                        <div class="task-title">
+                            <div class="task-incomplete-icon"></div>
+                            <a href="{% url 'task-edit' task.id %}">{{task}}</a>
+                        </div>
+                        <a href="{% url 'deletetask' task.id %}">
+                            <i class="fas fa-trash" style="color: #c71a2b; cursor: pointer;" data-toggle="modal" data-target="#DeleteModal"></i>
+                        </a>
+                        
+                        
+                    {% endif %}
+                    
+                </div>
+            {% empty %}
+                <h3 style="margin-left: 17px;">No items in list</h3>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- <table style="width: 30em; height: 5em;" >
+    <tr>
+        <th>Item</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for task in alltasks %}
+    <tr>
+        <td>{{task.title}}</td>
+        <td><a href="{% url 'task' task.id %}">View</a></td>
+        <td><a href="{% url 'task-edit' task.id %}">Edit</a></td>
+        <td><a href="{% url 'deletetask' task.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+        <h3>No items in list</h3>
+    {% endfor %}
+</table> -->

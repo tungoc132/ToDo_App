@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block auth %}
+
+<div class="header-bar-auth">
+    <img src="{% static 'img/logo2.png' %}">
+    <h1>Taskivist</h1>
+    <p></p>
+</div>
+
+<!-- <div class="googleauth">
+    <input class="button" type="submit" value="Continue with Google">
+    <hr>
+</div> -->
+
+<div class="auth_form">
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Notification for errors -->
+        <!-- {{form.as_p}} -->
+        <div class="form-group">
+            <i class="fas fa-user" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="username">Username</label>
+            {{ form.username }}
+            <span class="text-danger">{{ form.errors.username }}</span>
+        </div>
+
+        <div class="form-group">
+            <i class="fas fa-key" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="password">Password</label>
+            {{ form.password }}
+            <span class="text-danger">{{ form.errors.password }}</span>
+        </div>
+        {% for key, value in form.errors.items %}
+            {{value}}
+        {% endfor %}
+        <input class="button-auth" type="submit" value="Login">
+    </form>
+    <p>Don't have account?</p>
+    <a href="{% url 'register' %}">Create account</a>
+
+</div>
+
+{% endblock auth %}

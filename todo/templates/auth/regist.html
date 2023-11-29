@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block auth %}
+
+<div class="header-bar-auth">
+    <img src="{% static 'img/logo2.png' %}">
+    <h2>Create new account</h2>
+    <!-- <p></p> -->
+</div>
+
+<div class="auth_form">
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Register Form -->
+        <div class="form-group">
+            <i class="fas fa-user" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="username">Username</label>
+            {{ form.username }}
+            <span class="text-danger">{{ form.errors.username }}</span>
+        </div>
+
+        <div class="form-group">
+            <i class="fas fa-key" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="password">Password</label>
+            {{ form.password1 }}
+            <span class="text-danger">{{ form.errors.password1 }}</span>
+        </div>
+
+        <div class="form-group">
+            <i class="fas fa-key" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="password">Confirm Password</label>
+            {{ form.password2 }}
+            <span class="text-danger">{{ form.errors.password2 }}</span>
+        </div>
+        <!-- {{form.as_p}} -->
+        
+        <input class="button-auth" type="submit" value="Register">
+    </form>
+    <p>Already have an account?</p>
+    <a style="margin-left: 9.5em;" href="{% url 'login' %}">Sign in as user</a></p>
+</div>
+
+{% endblock auth %}

@@ -1,0 +1,152 @@
+.auth{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color:rgb(236, 245, 237);
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card{
+  height: fit-content;
+  width: 30em;
+  background: white;
+  box-shadow: 5px 5px 13px 5px rgba(0,0,0,0.21);
+}
+
+.header-bar-auth{
+    display: block;
+    height: fit-content;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    /* background: linear-gradient(90deg, #EEA390 0%, #EB796F 43%, #EB796F 100%) */
+    /* background: rgb(236, 245, 237); */
+    /* background: green; */
+}
+
+.header-bar-auth img{
+  padding-bottom: 10px; 
+  width: 4em; 
+  height: 4em; 
+}
+
+.header-bar-auth h1{
+  font-size: 350%; 
+  color: rgb(171, 36, 36);
+  font-weight: bold;
+}
+
+.header-bar-auth h2{
+  height: fit-content;
+  color: rgb(171, 36, 36);
+  text-align: center;
+  font-size: 200%;
+}
+
+.googleauth{
+  height: fit-content;
+  padding: 10px 53px 10px 65px;
+}
+
+.googleauth .button{
+  border: 1.5px solid green;
+  width: 100%;
+  height: 2.5em;
+  color: black;
+  display: inline-block;
+
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.googleauth hr{
+  border: .25px solid green;
+  margin-top: 15px;
+}
+
+.auth_form{
+  padding: 20px 3em 20px 3em;
+}
+
+.auth_form p{
+  text-align: center;
+  font-weight: 600; 
+  margin: 0 0 5px 25px;
+}
+
+.auth_form a{
+  color: rgb(219, 56, 56);
+  margin: 0 0 5px 9.3em;
+  text-align: center;
+}
+
+.auth_form ul{
+  font-weight: bold;
+  padding-left: 20px;
+  color: #dc3545 !important;
+  margin-bottom: 20px;
+  list-style: none;
+  font-size: 15px;
+}
+
+.auth_form .form-group {
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.form-group .label{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.auth_form .text-danger {
+  font-weight: bold;
+  padding-bottom: .5em;
+  color: #dc3545 !important;
+  font-size: 15px;
+}
+
+.button-auth{
+    border: transparent;
+    background-color: green;
+    padding: 10px 20px;
+    margin: 10px 0 20px 0;
+    width: 40%;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    left: 6.25em;
+}
+
+input[type=text],
+input[type=password]
+{
+  border: 1.5px solid green;
+  height: 2.5em;
+  margin: 15px 5px 0px 20px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  font-size: 15px;
+}

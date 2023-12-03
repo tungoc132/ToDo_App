@@ -15,3 +15,14 @@ class Task(models.Model):
     # Set the order base on "complete" value
     class Meta:
         ordering = ['complete']
+
+class Schedule(models.Model):
+    summary = models.CharField('summary', max_length=50)
+    description = models.TextField('description', blank=True)
+    start_time = models.TimeField('start time', default=datetime.time(7, 0, 0))
+    end_time = models.TimeField('end time', default=datetime.time(7, 0, 0))
+    date = models.DateField('date')
+    created_at = models.DateTimeField('created at', default=timezone.now)
+    def __str__(self):
+        return self.summary
+

@@ -14,9 +14,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
-import datetime
+from django.shortcuts import redirect
 from django.views import generic
-from todo.form import BS4ScheduleForm, SimpleScheduleForm
+from .models import Schedule
+import datetime
 from . import mixins
 
 class Login(LoginView):
@@ -84,55 +85,12 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('alltasks')
 
-class MonthWithScheduleCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
-    template_name = 'base/month_with_schedule.html'
-    model = Schedule
-    date_field = 'date'
+class MonthCalendar(mixins.MonthCalendarMixin, generic.TemplateView):
+    """View showing monthly calendar"""
+    template_name = 'todo/month.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         calendar_context = self.get_month_calendar()
         context.update(calendar_context)
         return context
-
-class MonthWithFormCalendar(mixins.MonthWithFormsMixin, generic.View):
-    template_name = 'base/month_with_forms.html'
-    model = Schedule
-    date_field = 'date'
-    form_class = SimpleScheduleForm
-
-    def get(self, request, **kwargs):
-        context = self.get_month_calendar()
-        formset = context['month_formset']
-        if formset.is_valid():
-            formset.save()
-            return redirect('month_with_forms')
-        return render(request, self.template_name, context)
-
-
-class MyCalendar(mixins.MonthCalendarMixin, mixins.WeekCalendarMixin, generic.CreateView):
-    template_name = 'base/mycalendar.html'
-    model = Schedule
-    date_field = 'date'
-    form_class = BS4ScheduleForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        week_calendar_context = self.get_week_calendar()
-        month_calendar_context = self.get_month_calendar()
-        context.update(week_calendar_context)
-        context.update(month_calendar_context)
-        return context
-
-    def form_valid(self, form):
-        month = self.kwargs.get('month')
-        year = self.kwargs.get('year')
-        day = self.kwargs.get('day')
-        if month and year and day:
-            date = datetime.date(year=int(year), month=int(month), day=int(day))
-        else:
-            date = datetime.date.today()
-        schedule = form.save(commit=False)
-        schedule.date = date
-        schedule.save()
-        return redirect('mycalendar', year=date.year, month=date.month, day=date.day)

@@ -17,6 +17,9 @@
     <!-- <script src="{% static 'js/jquery.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
     
 
     <title>Group 9 - Taskivist</title>
@@ -59,11 +62,31 @@
             <div class="card-body">
               <h2 class="card-title">Calendar</h2>
               <div class="card-calendar"></div>
+               <a href="{% url 'month' %}">prev_month</a>
+              {{ month_current | date:"Y/m" }}
+              <a href="{% url 'month' %}">next_month</a>
+              <table class="table">
+                <tbody>
+                  {% for week in month_days %}
+                  <tr>
+                    {% for day in week %}
+                    {% if now == day %}
+                        <td class="table-success">
+                            {% else %}
+                        <td>
+                          {% endif %}
+                          {% if month_current.month != day.month %}
+                          {{ day | date:"m/d" }}
+                          {% else %}
+                          {{ day.day }}
+                          {% endif %}
+                        </td>
+                    {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
-              {% block content %}
-
-              {% endblock %}
-
           </section>
         </div>
       </div>

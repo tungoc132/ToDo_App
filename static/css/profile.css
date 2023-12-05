@@ -1,0 +1,21 @@
+.profile-bar{
+    top: 60;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(179, 25, 25);
+    padding: 35px 35px 35px 15px;
+    border-radius: 5px 5px 0 0;
+    background: rgb(252, 242, 241);
+}
+
+.media img{
+    border-radius: 50%;
+}
+
+.userinfo{
+    padding-top: 10px;
+}
+
+.media-body label{
+    font-size: 20px;
+}

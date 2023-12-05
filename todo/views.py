@@ -1,4 +1,5 @@
 from typing import Any
+from django import forms
 from django.forms.models import BaseModelForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,6 +14,9 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+
+from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget, AdminTimeWidget
+
 
 class Login(LoginView):
     template_name = 'auth/login.html'
@@ -78,3 +82,13 @@ class TaskEdit(LoginRequiredMixin, UpdateView):
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('alltasks')
+    template_name = 'todo/confirm_delete.html'
+
+# def deleteTask(request, pk):
+#     deltask = get_object_or_404(Task, id=pk)
+#     if request.method == 'post':
+#         Task.delete()
+#         messages.success(request, 'Task successfully deleted!')
+#         return redirect('alltasks')
+#     else:
+#         return render(request, 'todo/confirm_delete.html', {'deltask': deltask})

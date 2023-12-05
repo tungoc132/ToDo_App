@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block delete %}
+<div class="delete-card">
+    <div class="header-delete">
+        <a href="{% url 'alltasks' %}">&#10008; Cancel</a>
+    </div>
+    <div class="delete-body">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure to delete "<b>{{task}}</b>" task?</p>
+            <input class="button" type="submit" value="Delete">
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

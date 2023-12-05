@@ -7,17 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Logo App -->
     <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    
     <!-- CSS for Authentication -->
     <link rel="stylesheet" href="{% static 'css/authen.css' %}" />
 
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <!-- <script src="{% static 'js/jquery.slim.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script> -->
-    
+    <!-- CSS for Components -->
+    <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" />
+
+     <!-- JS settings -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"></script>
+    <script src="{% static 'js/all.js' %}" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
     <title>Group 9 - Taskivist</title>
   </head>
@@ -26,24 +33,19 @@
     {% if request.user.is_authenticated %}
     <section id="sideheader">
       <div class="navheader">
-        <img
-          class="logo"
-          src="{% static 'img/logo2.png' %}"
-          alt="Logo Taskivist"
-        />
-        <a href="{% url 'alltasks' %}" class="name">Taskivist</a>
-        <ul class="navbar" style="top: 3.2em">
-          <li class="navItem">
-            <!-- <a href="">Calendar</a>
-            <a href="">Notification</a> -->
-          </li>
-        </ul>
+        <div class="navlogo">
+          <img class="logo" src="{% static 'img/logo.png' %}" alt="Logo Taskivist"/>
+          <a href="{% url 'alltasks' %}" class="name">Taskivist</a>
+        </div>
         <div class="usrnav">
-          <img src="{% static 'img/profile.png' %}" alt="Avatar" />
+          <!-- <img src="{% static 'img/profile.png' %}" alt="Avatar" /> -->
           <div class="greeting">
             {% if request.user.is_authenticated %}
-            <h1>Hello {{request.user|title}}</h1>
-            <a href="{% url 'logout' %}">Logout</a>
+            
+              <i class="fas fa-sign-out-alt button-logout" style="color: #c22222;">
+                <a href="{% url 'logout' %}">Logout</a>
+              </i>
+            
             {% else %}
             <a href="{% url 'login' %}">Login</a>
             {% endif %}
@@ -53,61 +55,22 @@
     </section>
 
     <section id="content">
-      <div class="col_left">
-        <div data-region="blocks-left">
-          <section class="block_calendar_month block card" data-block="calendar_month">
-            <div class="card-body">
-              <h2 class="card-title">Calendar</h2>
-              <div class="card-calendar"></div>
-            </div>
-          </section>
-        </div>
-      </div>
-
       {% block maincol %}
 
-      {% endblock %}      
-
-        {% block delete_completetask %}
-
-        {% endblock %}
-
-        {% block delete_incompletetask %}
-
-        {% endblock %}
-        
-        
-      </div>
+      {% endblock %}
     </section>
 
-
-
-    <!-- <section id="footer">
+    <div class="delete">
+      {% block delete %} 
+      
+      {% endblock %}
+    </div>
+    
+    <section id="footer">
       <div class="footer-content">
-        <div class="content">
-          <p class="rtecenter">
-            <span style="font-size: 16px; font-family: tahoma, geneva, sans-serif">
-              <strong>PHÒNG ĐÀO TẠO ĐẠI HỌC</strong>
-            </span>
-            <br>
-            " Phòng A120, Trường Đại học Công nghệ Thông tin."
-            <br>
-            " Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh."
-            <br>
-            " Điện thoại: "
-            <strong>(028) 372 51993, Ext: 113</strong>
-            " (Hệ từ xa qua mạng), "
-            <strong>112</strong>
-            " (Hệ chính quy)."
-            <br>
-            " Email: "
-            <strong>
-              <a href="mailto:phongdaotaodh@uit.edu.vn">phongdaotaodh@uit.edu.vn</a>
-            </strong>
-          </p>
-        </div>
+        <strong>Be Productive and Achieve Your Goals By Task & Activist</strong>
       </div>
-    </section> -->
+    </section>
 
     {% else %}
     <!-- Render page for authentication -->

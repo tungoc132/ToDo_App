@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class="media">
+    <img class="acc-img" src="{{user.profile.image.url}}">
+</div>
+<div class="userinfo">
+    <div class="media-body">
+        <label for="username">Username: {{user.username}}</label>
+        <p></p>
+        <label for="email">Email: {{user.email}}</label>
+    </div>
+</div>

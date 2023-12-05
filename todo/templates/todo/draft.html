@@ -77,3 +77,31 @@
 #         deltask.delete()
 #         return HttpResponseRedirect(reverse('alltasks'))
 #     return render(request, 'base/task_confirm_delete.html', context)
+
+
+
+<!-- {% extends 'main.html' %}
+
+{% block maincol %}
+<div class="maincol">
+    <div data-region="blocks-right">
+        <div class="header-bar-narrow">
+            <a href="{% url 'alltasks' %}">&#8592; Go back</a>
+        </div>
+        
+        <div class="main-body">
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure to delete <b>{{task}}</b>?</p>
+                <input class="button" type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %} -->
+
+
+<script src="{% static 'js/confirm_delete.js' %}"></script>
+<script src="{% static 'js/jquery.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>

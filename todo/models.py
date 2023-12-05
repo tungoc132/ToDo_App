@@ -7,7 +7,6 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
-    create = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.title
@@ -15,3 +14,10 @@ class Task(models.Model):
     # Set the order base on "complete" value
     class Meta:
         ordering = ['complete']
+        
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
+    
+    def __str__(self):
+        return f'{self.user.username} Profile'

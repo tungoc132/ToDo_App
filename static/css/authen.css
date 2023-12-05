@@ -150,3 +150,15 @@ input[type=password]
   width: 100%;
   font-size: 15px;
 }
+
+.card-body .text-danger {
+  /* font-weight: bold; */
+  padding-left: 2em;
+  padding-bottom: 1em;
+  color: #dc3545 ;
+}
+
+.form-group .label{
+  font-weight: bold;
+  font-size: 15px;
+}

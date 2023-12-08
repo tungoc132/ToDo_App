@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% block edit %}
+<div class="edit-card">
+    <div class="header-edit">
+        <a href="{% url 'alltasks' %}">&#10008; Cancel</a>
+    </div>
+    <div class="edit-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="label" for="username">Username</label>
+                {{ form.username }}
+                <span class="text-danger">{{ form.errors.username }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="first_name">First name:</label>
+                {{ form.first_name }}
+                <span class="text-danger">{{ form.errors.first_name }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="last_name">Last name:</label>
+                {{ form.last_name }}
+                <span class="text-danger">{{ form.errors.last_name }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="label" style="padding-right: 10px;" for="email">Email:</label>
+                {{ form.email }}
+                <span class="text-danger">{{ form.errors.email }}</span>
+            </div>
+    
+            <!-- <div class="form-group">
+                <label class="label"  for="password1">Password</label>
+                {{ form.password1 }}
+                <span class="text-danger">{{ form.errors.password1 }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="label"  for="password2">Password</label>
+                {{ form.password2 }}
+                <span class="text-danger">{{ form.errors.password2 }}</span>
+            </div> -->
+            <!-- {% for key, value in form.errors.items %}
+                {{value}}
+            {% endfor %} -->
+            <input class="button-save" style="margin-top: 20px;" type="submit" value="Save Changes">
+        </form>
+    </div>
+</div>
+{% endblock %}

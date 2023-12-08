@@ -12,7 +12,7 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
 
 from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget, AdminTimeWidget
@@ -92,3 +92,19 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
 #         return redirect('alltasks')
 #     else:
 #         return render(request, 'todo/confirm_delete.html', {'deltask': deltask})
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            success_url = reverse_lazy('alltasks')
+            return redirect(success_url)
+        
+    else:
+        form = UserChangeForm(instance=request.user)
+        context = {'form':form}
+        return render(request, 'profile/profile_edit.html', context)
+
+        

@@ -17,6 +17,7 @@ urlpatterns = [
     path('task-edit/<int:pk>/', TaskEdit.as_view(), name='task-edit'),
     path('deletetask/<int:pk>/', views.TaskDelete.as_view(), name='deletetask'),
     # path('deltask/<int:pk>/', views.deleteTask, name="deltask"),
+    path('profile-edit', views.edit_profile, name='profile-edit'),
 ]
 
 if settings.DEBUG:

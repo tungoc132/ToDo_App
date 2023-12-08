@@ -123,7 +123,7 @@ body{
 }
 
 img{
-    width: 5em; 
+    width: 6em; 
     height: 5em;
 }
 
@@ -351,8 +351,8 @@ input[value], textarea{
 
 .delete{
     display: flex;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     /* background-color:rgb(236, 245, 237); */
     background: transparent;
     align-items: flex-start;
@@ -390,6 +390,67 @@ input[value], textarea{
     font-size: 20px;
     padding: 10px;
 }
+
+.edit{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.edit-card{
+    height: max-content;
+    padding-bottom: 20px;
+    height: 25em;
+    width: 30em;
+    box-shadow: 5px 5px 20em 5px rgba(0,0,0,0.21);
+}
+
+.header-edit{
+    display: flex;
+    height: 30px;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    background-color: green;
+    color: white;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+}
+
+.edit-body{
+    display: flex;
+    background-color: #fff;
+    height: 25em;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.edit-body p{
+    font-size: 30px;
+    padding: 5px;
+}
+
+
+.edit-body input[type=text]{
+    /* border: 1px solid red; */
+    margin: 15px 0 0;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.edit-body input[type=email]{
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-right: 45px;
+}
+
 
 
 

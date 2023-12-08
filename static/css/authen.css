@@ -76,15 +76,15 @@
 }
 
 .auth_form p{
-  text-align: center;
+  /* text-align: center; */
   font-weight: 600; 
-  margin: 0 0 5px 25px;
+  /* margin: 0 0 5px 25px; */
 }
 
 .auth_form a{
   color: rgb(219, 56, 56);
-  margin: 0 0 5px 9.3em;
-  text-align: center;
+  /* margin: 0 0 5px 9.3em; */
+  /* text-align: center; */
 }
 
 .auth_form ul{
@@ -111,6 +111,22 @@
   margin-bottom: 0;
 }
 
+.auth_form .form-group-email{
+  display: block;
+  width: 10em;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
 .form-group .label{
   font-weight: bold;
   font-size: 18px;
@@ -123,25 +139,19 @@
   font-size: 15px;
 }
 
-.button-auth{
-    border: transparent;
-    background-color: green;
-    padding: 10px 20px;
-    margin: 10px 0 20px 0;
-    width: 40%;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    position: relative;
-    left: 6.25em;
-}
-
 input[type=text],
 input[type=password]
 {
+  border: 1.5px solid green;
+  height: 2.5em;
+  margin: 15px 5px 0px 20px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  font-size: 15px;
+}
+
+.auth_form input[type=email]{
   border: 1.5px solid green;
   height: 2.5em;
   margin: 15px 5px 0px 20px;
@@ -161,4 +171,10 @@ input[type=password]
 .form-group .label{
   font-weight: bold;
   font-size: 15px;
+}
+
+.more{
+  padding-top: 10px;
+  display: block;
+  text-align: center;
 }

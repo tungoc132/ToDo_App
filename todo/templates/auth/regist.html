@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+
 {% block auth %}
 
 <div class="header-bar-auth">
@@ -9,7 +10,7 @@
 </div>
 
 <div class="auth_form">
-    <form method="post">
+    <form method="POST" novalidate>
         {% csrf_token %}
 
         <!-- Register Form -->
@@ -18,6 +19,13 @@
             <label class="label" style="padding-left: 5px;" for="username">Username</label>
             {{ form.username }}
             <span class="text-danger">{{ form.errors.username }}</span>
+        </div>
+
+        <div class="form-group">
+            <i class="fas fa-envelope-open-text" style="color: #0e3f11;"></i>
+            <label class="label" style="padding-left: 5px;" for="email">Email</label>
+            {{ form.email }}
+            <span class="text-danger">{{ form.errors.email }}</span>
         </div>
 
         <div class="form-group">
@@ -34,11 +42,14 @@
             <span class="text-danger">{{ form.errors.password2 }}</span>
         </div>
         <!-- {{form.as_p}} -->
-        
-        <input class="button-auth" type="submit" value="Register">
+        <div class="btn-auth">
+            <input class="button-auth" type="submit" value="Register">
+        </div>
     </form>
-    <p>Already have an account?</p>
-    <a style="margin-left: 9.5em;" href="{% url 'login' %}">Sign in as user</a></p>
+    <div class="more">
+        <p>Already have an account?</p>
+        <a href="{% url 'login' %}">Sign in as user</a>
+    </div>
 </div>
 
 {% endblock auth %}

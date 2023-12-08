@@ -6,6 +6,7 @@
     padding: 35px 35px 35px 15px;
     border-radius: 5px 5px 0 0;
     background: rgb(252, 242, 241);
+    overflow: auto;
 }
 
 .media img{
@@ -18,4 +19,95 @@
 
 .media-body label{
     font-size: 20px;
+}
+
+.media-footer{
+    overflow: hidden;
+    padding: 15px 0 0;
+}
+
+.edit{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.edit-card{
+    /* height: max-content; */
+    padding-bottom: 20px;
+    height: 38em;
+    width: 35em;
+    box-shadow: 5px 5px 20em 5px rgba(0,0,0,0.21);
+    z-index: 2;
+}
+
+.header-edit{
+    display: flex;
+    height: 30px;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    background-color: green;
+    color: white;
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+}
+
+.edit-body{
+    display: flex;
+    background-color: #fff;
+    height: 35em;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.edit-body form{
+    width: 25em;
+}
+
+.form-group-avatar{
+    margin-bottom: 10px;
+}
+
+
+.form-group-avatar label{
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 20em 20px 0;
+}
+
+.form-group-avatar a{
+    color: rgb(13, 13, 252);
+    font-weight: 100;
+    padding-bottom: 4px;
+}
+
+.edit-body input[type=text]
+{
+    /* border: 1px solid red; */
+    margin: 15px 0 20px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 15px;
+    /* margin-bottom: 20px; */
+}
+
+.edit-body input[type=email]{
+    border: 1px solid green;
+    margin: 15px 0 20px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.edit-body input[type=file]{
+    /* border: 1px solid green; */
+    margin: 10px 0 20px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 15px;
+    padding: 0;
 }

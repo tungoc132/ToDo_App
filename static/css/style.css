@@ -27,7 +27,6 @@ body{
     /* background: rgb(202, 248, 206); */
     /* box-shadow: 0 8px 12px 0 rgba(0,0,0,.08); */
     max-height: 6em;
-    position: fixed;
     display: flex;
     top: 0;
     left: 0;
@@ -38,7 +37,6 @@ body{
 
 #content{
     margin: auto;
-    margin-top: 6em;
     display: flex;
     /* width: 90%; */
     height: max-content;
@@ -115,7 +113,6 @@ body{
 }
 
 .usrnav{
-    position: fixed;
     right: 40px;
     margin-top: 10;
     display: flex;
@@ -131,7 +128,7 @@ img{
     padding: 30px 10px;
     /* padding-top: 17; */
     font-size: 25;
-    text-align: right;
+    text-align: center;
 }
 
 .greeting a{
@@ -139,18 +136,6 @@ img{
     color:red;
     text-align: center;
     padding-bottom: 5px;
-}
-
-.button-logout{
-    border: transparent;
-    background-color: rgb(245, 231, 231);
-    padding: 5px;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
 }
 
 .col_left{
@@ -171,21 +156,10 @@ img{
     padding-right: 30px;
 }
 
-.col_left .card{
-    /* position: relative; */
-    display: flex;
-    flex-direction: column;
-    /* min-width: 0; */
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-}
-
 .col_left .card-body{
     padding: 1em !important;
     background-color: #fff;
+    overflow:auto ;
 }
 
 .col_left .card-body p{
@@ -363,6 +337,7 @@ input[value], textarea{
     /* height: 10em; */
     width: 40em;
     box-shadow: 5px 5px 8em 5px rgba(0,0,0,0.21);
+    z-index: 2;
 }
 
 .header-delete{
@@ -381,74 +356,17 @@ input[value], textarea{
 .delete-body{
     display: flex;
     background-color: #fff;
-    height: 9em;
+    /* height: 9em; */
+
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .delete-body p{
     font-size: 20px;
     padding: 10px;
-}
-
-.edit{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.edit-card{
-    height: max-content;
-    padding-bottom: 20px;
-    height: 25em;
-    width: 30em;
-    box-shadow: 5px 5px 20em 5px rgba(0,0,0,0.21);
-}
-
-.header-edit{
-    display: flex;
-    height: 30px;
-    justify-content: flex-end;
-    text-align: center;
-    align-items: center;
-    background-color: green;
-    color: white;
-    padding: 20px;
-    border-radius: 5px 5px 0 0;
-    font-size: 20px;
-}
-
-.edit-body{
-    display: flex;
-    background-color: #fff;
-    height: 25em;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.edit-body p{
-    font-size: 30px;
-    padding: 5px;
-}
-
-
-.edit-body input[type=text]{
-    /* border: 1px solid red; */
-    margin: 15px 0 0;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-.edit-body input[type=email]{
-    border: 1px solid green;
-    border-radius: 5px;
-    font-size: 15px;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-right: 45px;
 }
 
 

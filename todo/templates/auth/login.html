@@ -35,10 +35,15 @@
         {% for key, value in form.errors.items %}
             {{value}}
         {% endfor %}
-        <input class="button-auth" type="submit" value="Login">
+        <div class="btn-auth">
+            <input class="button-auth" type="submit" value="Login">
+        </div>
     </form>
-    <p>Don't have account?</p>
-    <a href="{% url 'register' %}">Create account</a>
+    <div class="more">
+        <p>Don't have account?</p>
+        <a href="{% url 'register' %}">Create account</a>
+    </div>
+    
 
 </div>
 

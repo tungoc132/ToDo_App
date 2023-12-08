@@ -105,3 +105,20 @@
 <script src="{% static 'js/confirm_delete.js' %}"></script>
 <script src="{% static 'js/jquery.slim.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
+
+# class RegisterView(FormView):
+#     template_name = 'auth/regist.html'
+#     form_class = UserCreationForm
+#     redirect_authenticated_user = True
+#     success_url = reverse_lazy('alltasks')
+    
+#     def form_valid(self, form):
+#        user = form.save()
+#        if user is not None:
+#            login(self.request, user)
+#        return super(RegisterView, self).form_valid(form)
+   
+#     def get(self, *args, **kwargs):
+#         if self.request.user.is_authenticated:
+#             return redirect('alltasks')
+#         return super(RegisterView, self).get(*args, **kwargs)   

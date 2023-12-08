@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, Login, RegisterView
+from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, Login
 from django.contrib.auth.views import LogoutView
 from . import views
 from django.conf import settings
@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('login', Login.as_view(), name='login'),
     path('logout', LogoutView.as_view(next_page = 'login'), name='logout'),
-    path('register', RegisterView.as_view(), name='register'),
+    path('register', views.regist, name='register'),
     
     path('', TaskList.as_view(), name='alltasks'),
     
@@ -17,7 +17,7 @@ urlpatterns = [
     path('task-edit/<int:pk>/', TaskEdit.as_view(), name='task-edit'),
     path('deletetask/<int:pk>/', views.TaskDelete.as_view(), name='deletetask'),
     # path('deltask/<int:pk>/', views.deleteTask, name="deltask"),
-    path('profile-edit', views.edit_profile, name='profile-edit'),
+    path('profile-edit', views.userUpdate, name='profile-edit'),
 ]
 
 if settings.DEBUG:

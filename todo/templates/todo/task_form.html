@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 {% block maincol %}
 <div class="col_left">
     <div data-region="blocks-left">
@@ -21,9 +23,37 @@
         </div>
         
         <div class="main-body">
-            <form method="post" action="">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'create-task' %}">
                 {% csrf_token %}
-                {{form.as_p}}
+                
+                <div class="form-group">
+                    <label class="label" for="title">Need to do:</label>
+                    {{ form.title }}
+                    <!-- <span class="text-danger">{{ form.errors.title }}</span> -->
+                </div>
+    
+                <div class="form-group">
+                    <label class="label" for="description">Description:</label>
+                    {{ form.description }}
+                    <!-- <span class="text-danger">{{ form.errors.description }}</span> -->
+                </div>
+    
+                <div class="form-group">
+                    <label class="label" for="complete">Complete?</label>
+                    {{ form.complete }}
+                    <!-- <span class="text-danger">{{ form.errors.complete }}</span> -->
+                </div>
+    
+                <div class="form-group">
+                    <label class="label" for="date">Deadline:</label>
+                    <span class="datetimeshortcuts">
+                        {{ form.media }}
+                    </span>
+                    <input type="text" name="date" class="vDateField" size="10" required="" id="id_date">
+                    
+                </div>
+    
+                <!-- {{ form.as_p }} -->
                 <input class="button-submit" type="submit" value="Submit">
             </form>
         </div>

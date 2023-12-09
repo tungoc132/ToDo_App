@@ -72,7 +72,7 @@
 }
 
 .auth_form{
-  padding: 20px 3em 20px 3em;
+  padding: 0 3em 20px 3em;
 }
 
 .auth_form p{
@@ -127,11 +127,6 @@
   margin-bottom: 0;
 }
 
-.form-group .label{
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .auth_form .text-danger {
   font-weight: bold;
   padding-bottom: .5em;
@@ -168,9 +163,14 @@ input[type=password]
   color: #dc3545 ;
 }
 
-.form-group .label{
+.form-group-auth label{
+  padding-top: 15px;
   font-weight: bold;
   font-size: 15px;
+}
+
+.form-group-auth i{
+  padding-top: 12px;
 }
 
 .more{

@@ -2,22 +2,19 @@ from typing import Any
 from django.forms.models import BaseModelForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, get_object_or_404
+from django import forms
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 
 from .models import Task
-from .forms import RegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import RegisterForm, UserUpdateForm, ProfileUpdateForm, TaskForm
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-
+from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-
-# from django.contrib.admin.widgets import AdminSplitDateTime, AdminDateWidget, AdminTimeWidget
 
 
 class Login(LoginView):
@@ -83,22 +80,38 @@ class TaskList(LoginRequiredMixin, ListView):
         
         return context
     
-class TaskDetail(LoginRequiredMixin, DetailView):
-    model = Task
-    context_object_name = 'task'
+@login_required
+def taskcreate(request):
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=request.user) 
+        
+        if form.is_valid():
+            form.save()
+            return redirect('alltasks')
+    else:
+        form = TaskForm(instance=request.user)
+        
+    return render(request, 'todo/task_form.html', {'form': form})
     
-class TaskCreate(LoginRequiredMixin, CreateView):
-    model = Task
-    fields = ['title', 'description', 'complete']
-    success_url = reverse_lazy('alltasks')
+# class TaskDetail(LoginRequiredMixin, DetailView):
+#     model = Task
+#     context_object_name = 'task'
+  
+# class TaskCreate(LoginRequiredMixin, CreateView):
+#     model = Task
+#     fields = ['title', 'description', 'complete', 'date']
+#     widgets = {
+#         "date": AdminDateWidget()
+#     }
+#     success_url = reverse_lazy('alltasks')
     
-    def form_valid(self, form):
-       form.instance.user = self.request.user
-       return super(TaskCreate, self).form_valid(form)
+#     def form_valid(self, form):
+#        form.instance.user = self.request.user
+#        return super(TaskCreate, self).form_valid(form)
 
 class TaskEdit(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'complete']
+    fields = ['title', 'description', 'complete', 'date']
     success_url = reverse_lazy('alltasks')
 
 class TaskDelete(LoginRequiredMixin, DeleteView):

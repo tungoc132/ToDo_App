@@ -1,5 +1,9 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User
+from datetime import date
+
+import datetime
 
 # model for database
 class Task(models.Model):
@@ -7,6 +11,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
+    date = models.DateField(default=datetime.date.today(), null=True, blank=True)
     
     def __str__(self):
         return self.title
@@ -14,6 +19,7 @@ class Task(models.Model):
     # Set the order base on "complete" value
     class Meta:
         ordering = ['complete']
+        
         
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

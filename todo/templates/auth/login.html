@@ -5,7 +5,6 @@
 <div class="header-bar-auth">
     <img src="{% static 'img/logo.png' %}">
     <h1>Taskivist</h1>
-    <p></p>
 </div>
 
 <!-- <div class="googleauth">
@@ -19,14 +18,14 @@
 
         <!-- Notification for errors -->
         <!-- {{form.as_p}} -->
-        <div class="form-group">
+        <div class="form-group-auth">
             <i class="fas fa-user" style="color: #0a3f11;"></i>
             <label class="label" style="padding-left: 5px;" for="username">Username</label>
             {{ form.username }}
             <span class="text-danger">{{ form.errors.username }}</span>
         </div>
 
-        <div class="form-group">
+        <div class="form-group-auth">
             <i class="fas fa-key" style="color: #0e3f11;"></i>
             <label class="label" style="padding-left: 5px;" for="password">Password</label>
             {{ form.password }}

@@ -67,10 +67,15 @@
     width: 25em;
 }
 
-.form-group-avatar{
-    margin-bottom: 10px;
+.form-group-profile label{
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 20em 20px 0;
 }
 
+.form-group-avatar{
+    margin-bottom: 5px;
+}
 
 .form-group-avatar label{
     font-weight: bold;

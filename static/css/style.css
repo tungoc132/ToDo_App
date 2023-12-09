@@ -28,10 +28,7 @@ body{
     /* box-shadow: 0 8px 12px 0 rgba(0,0,0,.08); */
     max-height: 6em;
     display: flex;
-    top: 0;
-    left: 0;
     align-items: center;
-    z-index: 1;
     /* box-shadow: 5px 5px 10x 5px rgba(0,0,0,0.21); */
 }
 
@@ -125,7 +122,7 @@ img{
 }
 
 .usrnav .greeting {
-    padding: 30px 10px;
+    padding: 24px 10px;
     /* padding-top: 17; */
     font-size: 25;
     text-align: center;
@@ -268,12 +265,8 @@ a{
 .search-bar{
     display: flex;
     justify-content: space-between;
-    align-items: first baseline;
+    align-items: flex-start;
     background: rgb(252, 242, 241);
-}
-
-input[value], textarea{
-    font-family: 'Inria Serif', serif;
 }
 
 .search-bar input[type=text]{
@@ -284,9 +277,17 @@ input[value], textarea{
     font-size: 15px;
 }
 
+.search-bar form{
+    width: 25em;
+}
+
+input[value], textarea{
+    font-family: 'Inria Serif', serif;
+}
+
 .main-body input[type=text], textarea{
     border: 1px solid red;
-    margin: 15px 0 0;
+    margin: 10px 0 0;
     border-radius: 5px;
     width: 100%;
     font-size: 15px;
@@ -296,32 +297,44 @@ input[value], textarea{
     padding: 0px 20px;
     background: #fff;
 }
+
+.main-body .form-group{
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-bottom: 0;
+
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+}
+
+.main-body label{
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.main-body input[type=checkbox]{
+    margin: 0 0 -10px 10px;
+}
+
+.main-body .text-danger {
+    font-weight: bold;
+    padding-bottom: .5em;
+    color: #dc3545 !important;
+    font-size: 15px;
+}
   
 .main-body p{
     font-weight: 600;
     padding: 20px 0 0;
 }
-
-/* .main-body a{
-    color: rgb(219, 56, 56);
-    margin: 0 0 5px 9.3em;
-    text-align: center;
-} */
-
-/* .card-body .form-group {
-    display: flex;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-bottom: 0;
-} */
 
 .delete{
     display: flex;

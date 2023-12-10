@@ -37,7 +37,7 @@ body{
     display: flex;
     /* width: 90%; */
     height: max-content;
-    padding-bottom: 30px;
+    padding-bottom: 10em;
     position: relative;
     z-index: 2;
     /* background-color: rgb(202, 248, 206); */
@@ -47,16 +47,13 @@ body{
 }
 
 #footer {
-    /* background: rgb(202, 248, 206); */
-    /* box-shadow: 100px 8px 12px 0 rgba(0,0,0,.08); */
     max-height: 5em;
     display: flex;
-    bottom: 0;
-    left: 0;
     align-items: center;
     padding: .5rem 1rem;
-    position: fixed;
-    box-shadow: 10px 5px 0 5px rgba(0,0,0,0.21);
+    float: inline-end;
+    /* position: fixed; */
+    /* box-shadow: 10px 5px 0 5px rgba(0,0,0,0.21); */
 }
 
 .navheader{
@@ -168,11 +165,6 @@ img{
     font-size: 30px;
 }
 
-.col_left .calendar{
-    font-size: 30px;
-    margin-top: 1rem !important;
-}
-
 .header-bar{
     top: 60;
     display: flex;
@@ -185,9 +177,9 @@ img{
 }
 
 .header-bar-narrow{
-    height: 5;
+    height: 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     color: #fff;
     padding: 25px;
@@ -219,28 +211,16 @@ a{
     margin-top: 5px;
 }
 
-.task-wrapper{
+/* .task-wrapper{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     background-color: #fff;
     border-top: 1px solid papayawhip;
-}
+} */
 
-.task-title{
-    display: flex;
-}
-
-.task-title a{
-    text-decoration: none;
-    color: brown;
-    margin-left: 20px;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.task-complete-icon{
+/* .task-complete-icon{
     height: 20px;
     width: 20px;
     background-color: rgb(105, 192, 105);
@@ -252,7 +232,7 @@ a{
     width: 20px;
     background-color: rgb(221, 228, 221);
     border-radius: 50%;
-}
+} */
 
 /* .delete-link{
     text-decoration: none;
@@ -285,6 +265,12 @@ input[value], textarea{
     font-family: 'Inria Serif', serif;
 }
 
+.taskbody{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+}
+
 .main-body input[type=text], textarea{
     border: 1px solid red;
     margin: 10px 0 0;
@@ -314,6 +300,14 @@ input[value], textarea{
     -ms-flex-align: center;
 }
 
+.main-body .errorlist{
+    list-style: none;
+    font-weight: bold;
+    padding-top: .5em;
+    color: #dc3545 !important;
+    font-size: 15px;
+}
+
 .main-body label{
     padding-top: 15px;
     font-weight: bold;
@@ -321,7 +315,7 @@ input[value], textarea{
 }
 
 .main-body input[type=checkbox]{
-    margin: 0 0 -10px 10px;
+    margin: 6px 0 -10px 10px;
 }
 
 .main-body .text-danger {
@@ -380,6 +374,13 @@ input[value], textarea{
 .delete-body p{
     font-size: 20px;
     padding: 10px;
+}
+
+/* UPDATE TASK */
+
+.main-body .date{
+    padding-top: 0;
+    display: flex;
 }
 
 

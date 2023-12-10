@@ -259,8 +259,8 @@ table p.datetime {
     border: 1px solid var(--hairline-color);
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    margin-left: 30px;
+    overflow: auto;
+    margin-left: 10px;
     z-index: 2;
 }
 
@@ -432,3 +432,36 @@ ul.timelist, .timelist li {
 
 /* CUSTOM */
 
+.main-body .form-group-date{
+    display: block;
+    padding-top: 10px;
+}
+
+.form-group-date .deadline{
+    padding-top: 10px;
+}
+
+.deadline input{
+    border: 1px solid rgb(213, 57, 57);
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 30%;
+    font-size: 13px;
+}
+
+.form-group-date .date input{
+    width: 30%;
+}
+
+.form-group-date .date .datetimeshortcuts{
+    margin: 15px 10px;
+}
+
+.form-group-date .deadline .datetimeshortcuts{
+    padding-bottom: 10px;
+}
+
+.form-group-date .date input{
+    width: 30%;
+}

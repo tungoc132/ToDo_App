@@ -1,8 +1,5 @@
 from django.db import models
-from django import forms
 from django.contrib.auth.models import User
-from datetime import date
-
 import datetime
 
 # model for database
@@ -18,7 +15,7 @@ class Task(models.Model):
     
     # Set the order base on "complete" value
     class Meta:
-        ordering = ['complete']
+        ordering = ['complete', 'date']
         
         
 class Profile(models.Model):

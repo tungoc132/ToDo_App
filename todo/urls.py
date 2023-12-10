@@ -1,5 +1,5 @@
 from . import views
-from .views import TaskList, TaskEdit, Login
+from .views import TaskList, Login
 
 from django.urls import path
 from django.contrib.auth.views import LogoutView
@@ -15,9 +15,9 @@ urlpatterns = [
     path('register', views.regist, name='register'),
     
     path('', TaskList.as_view(), name='alltasks'),
-    path('create-task', views.taskcreate, name='create-task'),
-    path('task-edit/<int:pk>/', TaskEdit.as_view(), name='task-edit'),
-    path('deletetask/<int:pk>/', views.TaskDelete.as_view(), name='deletetask'),
+    path('create_task', views.taskcreate, name='create-task'),
+    path('update_task/<task_id>', views.taskupdate, name='update-task'),
+    path('delete_task/<task_id>', views.taskdelete, name='delete-task'),
     path('profile-edit', views.userUpdate, name='profile-edit'),
     
     path('jsi18n', JavaScriptCatalog.as_view(), name='js-catlog'),

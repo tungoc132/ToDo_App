@@ -2,21 +2,19 @@ from typing import Any
 from django.forms.models import BaseModelForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django import forms
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Task
 from .forms import RegisterForm, UserUpdateForm, ProfileUpdateForm, TaskForm
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import DeleteView
 
-from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 
-
+# Login account
 class Login(LoginView):
     template_name = 'auth/login.html'
     fields = '__all__'
@@ -25,6 +23,7 @@ class Login(LoginView):
     def get_success_url(self):
         return reverse_lazy('alltasks')  
 
+# Register new account
 def regist(request):
     if request.method == 'GET':
         form = RegisterForm()
@@ -41,7 +40,8 @@ def regist(request):
             return redirect('login')
         else:
             return render(request, 'auth/regist.html', {'form': form})
-        
+ 
+# Update user information       
 @login_required
 def userUpdate(request):
     if request.method == 'POST':
@@ -62,6 +62,7 @@ def userUpdate(request):
     }
     return render(request, 'profile/profile_edit.html', context)
 
+# Show all tasks
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'alltasks'
@@ -74,50 +75,55 @@ class TaskList(LoginRequiredMixin, ListView):
         search_input = self.request.GET.get('search-area') or ''
         
         if search_input:
-            context['alltasks'] = context['alltasks'].filter(
-                title__icontains=search_input)
+            context['alltasks'] = context['alltasks'].filter(title__icontains=search_input)
         context['search_input'] = search_input
         
         return context
-    
-@login_required
+
+# Create new task
 def taskcreate(request):
     if request.method == "POST":
-        form = TaskForm(request.POST, instance=request.user) 
+        form = TaskForm(request.POST)
         
         if form.is_valid():
-            form.save()
-            return redirect('alltasks')
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            return HttpResponseRedirect('/')
     else:
-        form = TaskForm(instance=request.user)
-        
-    return render(request, 'todo/task_form.html', {'form': form})
+        form = TaskForm
     
-# class TaskDetail(LoginRequiredMixin, DetailView):
+    return render(request, 'todo/task_form.html', {'form': form})
+
+# Update created task
+def taskupdate(request, task_id):
+    task = Task.objects.get(pk=task_id)
+    form = TaskForm(request.POST or None, instance=task)
+
+    if form.is_valid():
+        form.save()
+        return redirect('alltasks')
+    
+    return render(request, 'todo/task_update.html', {'task': task, 'form': form})
+
+# Delete task
+def taskdelete(request, task_id):
+    task = Task.objects.get(pk=task_id)    
+    if request.method == "POST":
+        task.delete()
+        return redirect('alltasks')
+    
+    return render(request, 'todo/confirm_delete.html', {'task': task,})
+
+# class TaskDelete(LoginRequiredMixin, DeleteView):
 #     model = Task
-#     context_object_name = 'task'
-  
-# class TaskCreate(LoginRequiredMixin, CreateView):
+#     success_url = reverse_lazy('alltasks')
+#     template_name = 'todo/confirm_delete.html'
+    
+# class TaskEdit(LoginRequiredMixin, UpdateView):
 #     model = Task
 #     fields = ['title', 'description', 'complete', 'date']
-#     widgets = {
-#         "date": AdminDateWidget()
-#     }
 #     success_url = reverse_lazy('alltasks')
-    
-#     def form_valid(self, form):
-#        form.instance.user = self.request.user
-#        return super(TaskCreate, self).form_valid(form)
-
-class TaskEdit(LoginRequiredMixin, UpdateView):
-    model = Task
-    fields = ['title', 'description', 'complete', 'date']
-    success_url = reverse_lazy('alltasks')
-
-class TaskDelete(LoginRequiredMixin, DeleteView):
-    model = Task
-    success_url = reverse_lazy('alltasks')
-    template_name = 'todo/confirm_delete.html'
 
 # def deleteTask(request, pk):
 #     deltask = get_object_or_404(Task, id=pk)
@@ -144,5 +150,22 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
 #         form = UserChangeForm(instance=request.user)
 #         context = {'form':form}
 #         return render(request, 'profile/profile_edit.html', context)
+
+
+# class TaskDetail(LoginRequiredMixin, DetailView):
+#     model = Task
+#     context_object_name = 'task'
+  
+# class TaskCreate(LoginRequiredMixin, CreateView):
+#     model = Task
+#     fields = ['task', 'description', 'complete', 'date']
+#     widgets = {
+#         "date": AdminDateWidget()
+#     }
+#     success_url = reverse_lazy('alltasks')
+    
+#     def form_valid(self, form):
+#        form.instance.user = self.request.user
+#        return super(TaskCreate, self).form_valid(form)
 
         

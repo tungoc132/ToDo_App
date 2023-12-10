@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{% load static %}
+{% load widget_tweaks %}
 
 {% block maincol %}
 <div class="col_left">
@@ -19,8 +19,7 @@
 <div class="maincol">
     <div data-region="blocks-right">
         <div class="header-bar-narrow">
-            <h1 style="font-size: 25px;">Create new task</h1>
-            <!-- <a href="{% url 'alltasks' %}">&#8592; Go back</a> -->
+            <h1 style="font-size: 25px;">Update Task</h1>
             <a href="{% url 'alltasks' %}">&#10008; Cancel</a>
         </div>
         
@@ -33,25 +32,26 @@
                     {{ form.title }}
                     <span class="text-danger">{{ form.errors.title }}</span>
                 </div>
-    
+                
                 <div class="form-group">
                     <label class="label" for="description">Description:</label>
                     {{ form.description }}
                     <span class="text-danger">{{ form.errors.description }}</span>
                 </div>
-    
+                
                 <div class="form-group">
                     <label class="label" for="complete">Complete?</label>
                     {{ form.complete }}
                     <span class="text-danger">{{ form.errors.complete }}</span>
                 </div>
-    
+                
                 <div class="form-group-date">
                     <label class="label" for="date">Deadline:</label>
-                    <div class="deadline">
+                    {{ form.date }}
+                    <div class="media">
                         {{ form.media }}
-                        <input type="datetime" name="date" class="vDateField" size="10" required="" id="id_date">
-                    </div>                    
+                    </div>
+                    
                 </div>
                 
                 <input class="button-submit" type="submit" value="Submit">

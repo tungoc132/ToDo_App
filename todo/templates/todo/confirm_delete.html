@@ -8,6 +8,7 @@
     <div class="delete-body">
         <form method="post">
             {% csrf_token %}
+            
             <p>Are you sure to delete "<b>{{task}}</b>" task?</p>
             <div class="btn-delete">
                 <input class="button" type="submit" value="Delete">

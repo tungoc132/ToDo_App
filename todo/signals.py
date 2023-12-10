@@ -11,16 +11,3 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, **kwargs):
     instance.profile.save()
-    
-
-# @receiver(post_save, sender=Task)
-# def create_task(sender, instance, created, **kwargs):
-#     if created:
-#         Task.objects.create(user = instance)
-        
-# @receiver(post_save, sender=Task)
-# def create_task(sender, instance, **kwargs):
-#     instance.title.save()
-        
-
-

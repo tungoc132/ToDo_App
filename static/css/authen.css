@@ -89,7 +89,7 @@
 
 .auth_form ul{
   font-weight: bold;
-  padding-left: 20px;
+  padding-left: 22px;
   color: #dc3545 !important;
   margin-bottom: 20px;
   list-style: none;
@@ -129,24 +129,25 @@
 
 .auth_form .text-danger {
   font-weight: bold;
-  padding-bottom: .5em;
+  /* padding-bottom: .5em; */
   color: #dc3545 !important;
   font-size: 15px;
 }
 
 input[type=text],
-input[type=password]
+input[type=password],
+input[type=email]
 {
   border: 1.5px solid green;
   height: 2.5em;
-  margin: 15px 5px 0px 20px;
+  margin: 8px 10px 15px 22px;
   border-radius: 5px;
   padding: 5px;
-  width: 100%;
+  width: 90%;
   font-size: 15px;
 }
 
-.auth_form input[type=email]{
+/* .auth_form input[type=email]{
   border: 1.5px solid green;
   height: 2.5em;
   margin: 15px 5px 0px 20px;
@@ -154,7 +155,7 @@ input[type=password]
   padding: 5px;
   width: 100%;
   font-size: 15px;
-}
+} */
 
 .card-body .text-danger {
   /* font-weight: bold; */
@@ -164,13 +165,13 @@ input[type=password]
 }
 
 .form-group-auth label{
-  padding-top: 15px;
+  padding-top: 20px;
   font-weight: bold;
   font-size: 15px;
 }
 
 .form-group-auth i{
-  padding-top: 12px;
+  padding-top: 13px;
 }
 
 .more{
